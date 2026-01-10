@@ -1,113 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Vijay | CineWiki</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijay | CineWiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --accent: #e5e5e5;
+            --text-light: #f8f8f8;
+            --text-dark: #333;
+            --border-subtle: #d4d4d4;
+        }
 
-<style>
-body{
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f5f5f5;
-}
-header{
-  background-color: #20232a;
-  color: white;
-  padding: 20px;
-}
-nav a{
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
-section{
-  padding: 30px;
-}
-table{
-  border-collapse: collapse;
-  width: 70%;
-  background-color: white;
-}
-th, td{
-  border: 1px solid #ccc;
-  padding: 12px;
-  vertical-align: top;
-}
-th{
-  background-color: #f0f0f0;
-  width: 30%;
-}
-img{
-  width: 200px;
-  border-radius: 5px;
-}
-footer{
-  background-color: #20232a;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  margin-top: 40px;
-}
-</style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fafafa;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #2d2d2d 100%);
+            color: var(--text-light);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s ease, color 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 2rem 0;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 40%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            animation: subtle-float 20s ease-in-out infinite;
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            padding: 2rem 0;
+        }
+
+        .info-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-collapse: collapse;
+        }
+
+        .info-table th {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .info-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        .info-table img {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        .info-table .detail-label {
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .info-table .detail-value {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .info-table .famous-movies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .info-table .famous-movies span {
+            background: #e3f2fd;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #1976d2;
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 2rem; }
+            nav { gap: 1rem; }
+            nav a { font-size: 0.95rem; padding: 0.4rem 0.8rem; }
+            .info-table img { width: 250px; }
+            .info-table th, .info-table td { padding: 1rem; }
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <div class="container">
+            <h1>Vijay</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="actor1.html">Rajinikanth</a>
+                <a href="actor2.html">Kamal Haasan</a>
+            </nav>
+        </div>
+    </header>
 
-<header>
-  <h1>Vijay</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="actor1.html">Rajinikanth</a>
-    <a href="actor2.html">Kamal Haasan</a>
-  </nav>
-</header>
+    <section class="hero">
+        <div class="container">
+            <h2>Thalapathy</h2>
+            <p>A dynamic force in contemporary Tamil cinema, celebrated for his energetic performances, mass appeal, and unwavering dedication to his craft.</p>
+        </div>
+    </section>
 
-<section>
-  <table>
-    <tr>
-      <th>Photo</th>
-      <td>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Vijay_2023.jpg"
-             alt="Vijay">
-      </td>
-    </tr>
+    <section class="info-section container">
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th colspan="2">Biography</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="7">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Vijay_2023.jpg" alt="Vijay">
+                    </td>
+                    <td>
+                        <span class="detail-label">Full Name</span>
+                        <span class="detail-value">Joseph Vijay Chandrasekhar</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="detail-label">Born</span>
+                        <span class="detail-value">22 June 1974</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="detail-label">Occupation</span>
+                        <span class="detail-value">Actor</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="detail-label">Industry</span>
+                        <span class="detail-value">Tamil Cinema</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="detail-label">Years Active</span>
+                        <span class="detail-value">1992 – Present</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="detail-label">Famous Movies</span>
+                        <div class="famous-movies">
+                            <span>Ghilli</span>
+                            <span>Thuppakki</span>
+                            <span>Master</span>
+                            <span>Leo</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-    <tr>
-      <th>Full Name</th>
-      <td>Joseph Vijay Chandrasekhar</td>
-    </tr>
-
-    <tr>
-      <th>Born</th>
-      <td>22 June 1974</td>
-    </tr>
-
-    <tr>
-      <th>Occupation</th>
-      <td>Actor</td>
-    </tr>
-
-    <tr>
-      <th>Industry</th>
-      <td>Tamil Cinema</td>
-    </tr>
-
-    <tr>
-      <th>Years Active</th>
-      <td>1992 – Present</td>
-    </tr>
-
-    <tr>
-      <th>Famous Movies</th>
-      <td>Ghilli, Thuppakki, Master, Leo</td>
-    </tr>
-  </table>
-</section>
-
-<footer>
-  © 2026 CineWiki | Educational Project
-</footer>
-
+    <footer>
+        © 2026 CineWiki | Educational Project
+    </footer>
 </body>
 </html>
